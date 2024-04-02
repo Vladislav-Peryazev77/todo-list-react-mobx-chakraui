@@ -1,6 +1,7 @@
 import { Container, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import { TaskInput } from "../TaskInput/TaskInput";
+import { Counter } from "../Counter/Counter";
 
 export const Todo = () => {
   return (
@@ -10,6 +11,7 @@ export const Todo = () => {
       </Heading>
       <Text flexGrow={1}>
         <TaskInput />
+        <Counter />
       </Text>
       <Text padding="15px" textAlign="center">
         2024
