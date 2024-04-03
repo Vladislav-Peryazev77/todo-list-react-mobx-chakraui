@@ -1,13 +1,36 @@
-import { Box, Button, FormControl, Input } from "@chakra-ui/react";
+import { Button, FormControl, Input } from "@chakra-ui/react";
 import React from "react";
+import TaskInputStore from "../../stores/TaskInputStore";
+import { observer } from "mobx-react-lite";
 
-export const TaskInput = () => {
-  return (
-    <FormControl>
-      <Box display="flex" gap={15}>
-        <Input placeholder="Your todo" />
-        <Button colorScheme="purple">+</Button>
-      </Box>
-    </FormControl>
-  );
+type Props = {
+  onAddTask: (title: string) => void;
 };
+
+export const TaskInput = observer(({ onAddTask }: Props) => {
+  const { taskInputValue, handleInputValueChange } = TaskInputStore;
+
+  const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (taskInputValue.trim() === "") {
+      return;
+    }
+    onAddTask(taskInputValue);
+    console.log(taskInputValue);
+
+    handleInputValueChange("");
+  };
+
+  return (
+    <form action="" onSubmit={handleSubmitForm}>
+      <FormControl display="flex" gap={15} marginBottom="20px">
+        <Input
+          placeholder="Your todo"
+          name="task"
+          onChange={(event) => handleInputValueChange(event.target.value)}
+        />
+        <Button colorScheme="purple">+</Button>
+      </FormControl>
+    </form>
+  );
+});

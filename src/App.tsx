@@ -1,6 +1,15 @@
 import React from "react";
-import { Todo } from "./components/Todo/Todo";
+import { TodoList } from "./components/TodoList/TodoList";
+import { Container, Text } from "@chakra-ui/react";
+import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
 
 export const App = () => {
-  return <Todo />;
+  return (
+    <Container display="flex" flexDirection="column" height="100dvh">
+      <Header />
+      <TodoList />
+      <Footer />
+    </Container>
+  );
 };
