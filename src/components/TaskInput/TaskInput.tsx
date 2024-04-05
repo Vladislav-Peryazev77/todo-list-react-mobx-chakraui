@@ -16,7 +16,6 @@ export const TaskInput = observer(({ onAddTask }: Props) => {
       return;
     }
     onAddTask(taskInputValue);
-    console.log(taskInputValue);
 
     handleInputValueChange("");
   };
@@ -25,6 +24,7 @@ export const TaskInput = observer(({ onAddTask }: Props) => {
     <form action="" onSubmit={handleSubmitForm}>
       <FormControl display="flex" gap={15} marginBottom="20px">
         <Input
+          value={taskInputValue}
           placeholder="Your todo"
           name="task"
           onChange={(event) => handleInputValueChange(event.target.value)}
