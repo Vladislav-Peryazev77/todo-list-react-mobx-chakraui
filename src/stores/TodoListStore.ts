@@ -11,7 +11,7 @@ class TodoListStore {
 
   constructor() {
     makeAutoObservable(this);
-    if (this.toDoList.length === 0) {
+    if (!this.toDoList.length) {
       this.handleLoadTasksFromLocalStorage();
     }
   }
@@ -38,7 +38,7 @@ class TodoListStore {
 
   handleLoadTasksFromLocalStorage = () => {
     const tasks = localStorage.getItem("tasks");
-    if (tasks) {
+    if (Array.isArray(tasks)) {
       this.toDoList = JSON.parse(tasks);
     }
   };

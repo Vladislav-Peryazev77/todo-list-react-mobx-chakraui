@@ -6,13 +6,7 @@ import TodoListStore from "../../stores/TodoListStore";
 import { observer } from "mobx-react-lite";
 
 export const TodoList = observer(() => {
-  const {
-    toDoList,
-    setToDoList,
-    setTaskStatus,
-    handleAddTask,
-    handleUpdateLocalStorage,
-  } = TodoListStore;
+  const { toDoList, setToDoList, setTaskStatus, handleAddTask } = TodoListStore;
 
   const handleTaskStatusChange = (checkedTaskId: number) => {
     const foundIndex = toDoList.findIndex((task) => task.id === checkedTaskId);
@@ -37,7 +31,6 @@ export const TodoList = observer(() => {
             key={key}
             onChange={handleTaskStatusChange}
             onDeleteTask={handleDeleteTask}
-            onUpdate={handleUpdateLocalStorage}
           />
         ))}
       </List>

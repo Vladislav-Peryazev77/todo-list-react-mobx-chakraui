@@ -1,17 +1,16 @@
 import React from "react";
 import { Box, Button, Checkbox, ListItem, Text } from "@chakra-ui/react";
 import { observer } from "mobx-react-lite";
-import Task from "../../stores/types/todoListTypes";
+import { Task } from "../../stores/types/todoListTypes";
 
 interface TaskItemProps {
   task: Task;
   onChange: (id: number) => void;
   onDeleteTask: (id: number) => void;
-  onUpdate: () => void;
 }
 
 export const TaskItem = observer(
-  ({ task, onChange, onDeleteTask, onUpdate }: TaskItemProps) => {
+  ({ task, onChange, onDeleteTask }: TaskItemProps) => {
     return (
       <ListItem
         border="1px solid grey"
