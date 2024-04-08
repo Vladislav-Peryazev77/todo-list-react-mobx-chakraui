@@ -4,11 +4,15 @@ import { TaskItem } from "../TaskItem/TaskItem";
 import { Box, List } from "@chakra-ui/react";
 import TodoListStore from "../../stores/TodoListStore";
 import { observer } from "mobx-react-lite";
-import { toJS } from "mobx";
 
 export const TodoList = observer(() => {
-  const { toDoList, setToDoList, setTaskStatus } = TodoListStore;
-  toJS(toDoList);
+  const {
+    toDoList,
+    setToDoList,
+    setTaskStatus,
+    handleAddTask,
+    handleUpdateLocalStorage,
+  } = TodoListStore;
 
   const handleTaskStatusChange = (checkedTaskId: number) => {
     const foundIndex = toDoList.findIndex((task) => task.id === checkedTaskId);
@@ -25,7 +29,7 @@ export const TodoList = observer(() => {
 
   return (
     <Box flexGrow="1">
-      <TaskInput onAddTask={setToDoList} />
+      <TaskInput onAddTask={handleAddTask} />
       <List display="flex" gap="5px" flexDirection="column">
         {toDoList.map((task, key) => (
           <TaskItem
@@ -33,6 +37,7 @@ export const TodoList = observer(() => {
             key={key}
             onChange={handleTaskStatusChange}
             onDeleteTask={handleDeleteTask}
+            onUpdate={handleUpdateLocalStorage}
           />
         ))}
       </List>

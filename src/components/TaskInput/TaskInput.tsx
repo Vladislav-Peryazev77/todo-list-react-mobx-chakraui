@@ -3,11 +3,11 @@ import React from "react";
 import TaskInputStore from "../../stores/TaskInputStore";
 import { observer } from "mobx-react-lite";
 
-type Props = {
+interface TaskInputProps {
   onAddTask: (title: string) => void;
-};
+}
 
-export const TaskInput = observer(({ onAddTask }: Props) => {
+export const TaskInput = observer(({ onAddTask }: TaskInputProps) => {
   const { taskInputValue, handleInputValueChange } = TaskInputStore;
 
   const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
