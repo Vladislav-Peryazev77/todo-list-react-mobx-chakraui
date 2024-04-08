@@ -29,7 +29,7 @@ export const TaskItem = observer(
           />
           <Text
             maxWidth="70%"
-            sx={{ textDecoration: task.completed ? "line-through" : "" }}
+            sx={{ textDecoration: task.completed ? "line-through" : "none" }}
           >
             {task.title}
           </Text>
